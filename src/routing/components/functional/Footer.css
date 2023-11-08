@@ -1,0 +1,19 @@
+.Footer{
+    background-color: rgba(182, 168, 112, 0.197);
+    color:black;
+    height: 100px;
+    text-align: center;
+   
+}
+.lists{
+    display: inline-block;
+    text-decoration: none;
+    margin: 70px;
+    font-size: large;
+    font-weight: bolder;
+}
+@media(max-width:792.5px){
+    Footer{
+       margin-bottom: 0px;
+    }
+}

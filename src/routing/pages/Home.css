@@ -1,0 +1,22 @@
+.font-bold{
+    color: red;
+}
+.btn{
+    color: white;
+    border-radius: 10px;
+}
+.container{
+    background-color: white;
+    width: 1000px;
+    height: 600px;
+    margin:auto ;
+    margin-top: 10px;
+}
+.card{
+    width: 250px;
+    margin-top: 50px;
+}
+.crd-1{
+
+    margin-left: 20px;
+}
