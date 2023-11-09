@@ -16,14 +16,14 @@ const startExam=async(e)=>{
   e.preventDefault();
 
   
-  const examId = 25; 
+  const examId = 24; 
   
 
     try {
       const response = await dispatch(fetchExamQuestions(examId));
       console.log(response,"questions list");
-      if (response.status == 200) {
-        navigate("/examComponent",{ state: { response: response.data }});
+      if (response.status === 200) {
+        navigate("/examComponent",{ state: { response: response.data.exam }});
       }else{
         console.log("response is not as expected");
       }

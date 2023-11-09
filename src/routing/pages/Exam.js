@@ -8,15 +8,9 @@ import FreeExam from "./FreeExam";
 function Exam() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const regUser = useSelector((state) => state.examReducer);
+  const regUser = useSelector((state) => state.regUser);
   const [responseInUI, setResponseInUI] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(regUser, "reguser");
-
-  console.log(regUser);
-
-
-
 
   const formData = {
     email: "kiranmouliorugundla@gmail.com",

@@ -1,4 +1,4 @@
-// Your React component where you want to fetch questions
+
 
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,17 +8,14 @@ import Header from '../components/functional/Header';
 
 function ExamComponent() {
   const dispatch = useDispatch();
-  const { questions, loading, error } = useSelector((state) => state.exam);
-  const examId = 24; 
-  const headers = {
-    id: 'your_id_here',
-    server_key: 'your_server_key_here',
-    tokenu: 'your_tokenu_here',
-  };
+  const { data,questions, loading, error } = useSelector((state) => state.exam);
+  const examId = 1465; 
+  
 
   useEffect(() => {
     dispatch(fetchExamQuestions(examId));
-  }, [dispatch, examId]);
+  }, [dispatch]);
+console.log('State:', useSelector((state) => state.exam));
 
   if (loading) {
     return <div>Loading...</div>;
@@ -27,19 +24,39 @@ function ExamComponent() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  if (!data || !Array.isArray(data.exam)) {
+    console.log('DAta',data);
+    return <p>No questions available.</p>;
+  }
+  
+  
+  
 
   return (
+
     <div>
           <Header/>
 
       <h1>Exam Questions</h1>
+
       <ul>
-        {questions.map((question) => (
-          <li key={question.id}>{question.text}</li>
-        ))}
-      </ul>
+      {data.exam.map((question) => (
+        <li key={question.id}>{question.text}</li>
+      ))}
+    </ul>
+    {/* <ul>
+        {Array.isArray(questions) ? (
+          questions.map((question, index) => (
+            <li key={question.id}>{question.text}</li>
+          ))
+        ) : (
+          <p>No questions available.</p>
+        )}
+      </ul> */}
+      
     </div>
   );
 }
+
 
 export default ExamComponent;

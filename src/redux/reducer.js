@@ -141,7 +141,8 @@ export const regReducer = (state =  {
 
 
  export const examReducer = (state =  {
-  questions: [],
+  data: {},
+  questions:[],
   loading: false,
   error: null,
 }, action) => {
@@ -155,9 +156,9 @@ export const regReducer = (state =  {
     case FETCH_EXAM_QUESTIONS_SUCCESS:
       return {
         ...state,
-        questions: action.payload,
+         questions: action.payload.exam,
         loading: false,
-        error: null,
+        data: action.payload,
       };
     case FETCH_EXAM_QUESTIONS_FAILURE:
       return {

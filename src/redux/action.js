@@ -121,15 +121,15 @@ return async(dispatch)=>{
     const response = await axios.post('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
       id: 4341, 
       server_key: server_key,
-      tokenu: '0qqmFIGu0l7ea2Y0yp3t' 
+      tokenu: 'KR59t4IXXzvwsNMKfJYe' 
      } 
     });
-    // return response
+   
     
     console.log(response,"axios response");
 
-    dispatch(submitRegistrationSuccess(response.data));
-   
+    dispatch(submitRegistrationSuccess(response.data.data));
+    return response
    
   } catch (error) {
     dispatch(submitRegistrationFailure(error.message));
@@ -157,39 +157,64 @@ export const submitRegistrationFailure = (error) => ({
 
 //startExam
 
-export const fetchExamQuestions = (examId) => {
-  return  (dispatch) => {
-    dispatch(fetchExamQuestionsRequest());
+// export const fetchExamQuestions = (examId) => {
+//   return  async(dispatch) => {
+//     dispatch(fetchExamQuestionsRequest());
+// try{
+//   const response = await axios.get(
+//     `https://e-prathibha.com/apis/start_exam?examId=${examId}`,
+//     {
+//       headers: {
+//         id: 4341,
+//         server_key: server_key,
+//         tokenu: 'U7t8LeLpqLfdeHk4KjtB',
+//       },
+//     }
+//   );
 
-    axios
-      .get(`https://e-prathibha.com/apis/start_exam?examId=${examId}`, {
-        headers: {
-          id: 4341, 
-          server_key: server_key,
-          tokenu: '0qqmFIGu0l7ea2Y0yp3t' ,
-      }})
-      .then((response) => {
-        const questions = response.data; // Assuming the response contains questions
-        dispatch(fetchExamQuestionsSuccess(questions));
-      })
-      .catch((error) => {
-        dispatch(fetchExamQuestionsFailure(error.message));
-      });
-  };
+// // console.log(response,"response2");
+//   const questions = response.data;
+//   dispatch(fetchExamQuestionsSuccess(questions));
+//   return response
+
+// } catch (error) {
+//   dispatch(fetchExamQuestionsFailure(error.message));
+// }
+   
+//   };
+// };
+
+export const fetchExamQuestions = (examId) => async (dispatch) => {
+  dispatch({ type: 'FETCH_EXAM_QUESTIONS_REQUEST' });
+
+  try {
+    const response = await axios.get(` https://e-prathibha.com/apis/start_exam?examId=${examId}`,{headers: {id: 4341, 
+    server_key: server_key,
+    tokenu: 'KR59t4IXXzvwsNMKfJYe' 
+   } });
+    const data = await response.data;
+
+    dispatch({ type: 'FETCH_EXAM_QUESTIONS_SUCCESS', payload: data });
+    return response
+    
+  } catch (error) {
+    dispatch({ type: 'FETCH_EXAM_QUESTIONS_FAILURE', payload: error.message });
+  }
 };
-export const fetchExamQuestionsRequest = () => ({
-  type: FETCH_EXAM_QUESTIONS_REQUEST,
-});
 
-export const fetchExamQuestionsSuccess = (questions) => ({
-  type: FETCH_EXAM_QUESTIONS_SUCCESS,
-  payload: questions,
-});
+// export const fetchExamQuestionsRequest = () => ({
+//   type: FETCH_EXAM_QUESTIONS_REQUEST,
+// });
 
-export const fetchExamQuestionsFailure = (error) => ({
-  type: FETCH_EXAM_QUESTIONS_FAILURE,
-  payload: error,
-});
+// export const fetchExamQuestionsSuccess = (questions) => ({
+//   type: FETCH_EXAM_QUESTIONS_SUCCESS,
+//   payload: questions,
+// });
+
+// export const fetchExamQuestionsFailure = (error) => ({
+//   type: FETCH_EXAM_QUESTIONS_FAILURE,
+//   payload: error,
+// });
 
 // export const examBegins = (formData)  => {
  
