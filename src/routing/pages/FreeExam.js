@@ -23,7 +23,7 @@ const startExam=async(e)=>{
       const response = await dispatch(fetchExamQuestions(examId));
       console.log(response,"questions list");
       if (response.status === 200) {
-        navigate("/examComponent",{ state: { response: response.data.exam }});
+        navigate("/examComponent",{ state: { response: response.data }});
       }else{
         console.log("response is not as expected");
       }

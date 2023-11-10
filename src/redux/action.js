@@ -13,6 +13,7 @@ import {
   FETCH_EXAM_QUESTIONS_FAILURE,
 } from "./actionTypes";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // const tokenu= "vggb6M6X5CS2zdVSEmki"
 // const id =4341
 const server_key = "3w99V63pW7tJ7vavGXtCKo8cp";
@@ -78,7 +79,6 @@ export const registerUser = (formData) => (dispatch) => {
 
 //LOGIN_USER
 export const loginUser = (userCredentials) => {
-  
   return async (dispatch) => {
    
     try {
@@ -121,7 +121,7 @@ return async(dispatch)=>{
     const response = await axios.post('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
       id: 4341, 
       server_key: server_key,
-      tokenu: 'KR59t4IXXzvwsNMKfJYe' 
+      tokenu: "NIJ9Al4L82CUk9d9A0F4"
      } 
     });
    
@@ -190,9 +190,10 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
   try {
     const response = await axios.get(` https://e-prathibha.com/apis/start_exam?examId=${examId}`,{headers: {id: 4341, 
     server_key: server_key,
-    tokenu: 'KR59t4IXXzvwsNMKfJYe' 
+    tokenu: "NIJ9Al4L82CUk9d9A0F4"
    } });
-    const data = await response.data;
+    const data = await response.data.data;
+    console.log(data);
 
     dispatch({ type: 'FETCH_EXAM_QUESTIONS_SUCCESS', payload: data });
     return response
