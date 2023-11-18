@@ -11,7 +11,7 @@ function ExamComponent() {
   const dispatch = useDispatch();
   const {data,questions, loading, error } = useSelector((state) => state.exam);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const examId = 24; 
+  const examId = 25; 
   console.log('DAta',data);
 
 

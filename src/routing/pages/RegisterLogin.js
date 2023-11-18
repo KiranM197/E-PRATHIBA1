@@ -21,7 +21,6 @@ const RegisterLogin=()=> {
     password: '',
     confirmPassword: '',
   });
-const [isSubmitted,setIsSubmitted]=useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
@@ -34,18 +33,20 @@ const [isSubmitted,setIsSubmitted]=useState(false)
     
     try {
   
-
-        
-      // }
+     
       const response = await dispatch(registerUser(formData));
       console.log("registerresponse",response);
-      if (response && response.status === 200) {
+      if (response && response.status === 200 && response.data) {
         navigate('/emailverify');
+        // if(!email || !name || !phone || !password || !confirmPassword ){
+        //   alert("please enter the valid details")
+
+        // }
       } else {
-        console.log('Registration failed');
+        console.log('Registration failed',response ?response.data:'no response data');
       }
     } catch (error) {
-      console.log('Registration Error:', error);
+      console.log('Registration Error:', error.message);
     }
     
   };

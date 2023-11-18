@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyEmail } from '../../redux/action';
+import Header from '../components/functional/Header';
 
 const EmailVerificationPage = () => {
   const [regCode, setRegCode] = useState('');

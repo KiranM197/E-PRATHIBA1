@@ -14,48 +14,29 @@ import {
 } from "./actionTypes";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// const tokenu= "vggb6M6X5CS2zdVSEmki"
-// const id =4341
+
 const server_key = "3w99V63pW7tJ7vavGXtCKo8cp";
 
-export const registerUser = (formData) => (dispatch) => {
+
+
+export const registerUser = (formData) => async (dispatch) => {
   dispatch({ type: REGISTER_USER_REQUEST });
-  const formDataObject = new FormData();
-  formDataObject.append('email', formData.email);
-  formDataObject.append('name', formData.name);
-  formDataObject.append('phone', formData.phone);
-  formDataObject.append('password', formData.password);
-  formDataObject.append('confirmPassword', formData.confirmPassword);
 
-  axios
-    .post('https://e-prathibha.com/apis/register', formDataObject)
-    .then((response) => {
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
-    })
-    .catch((error) => {
-      dispatch({ type: REGISTER_USER_FAILURE, error: error.message });
-    });
+  try {
+    const response = await axios.post('https://e-prathibha.com/apis/register', formData);
 
-// const formDataObject = new FormData();
-//   formDataObject.append('email', formData.email);
-//   formDataObject.append('name', formData.name);
-//   formDataObject.append('phone', formData.phone);
-//   formDataObject.append('password', formData.password);
-//   formDataObject.append('confirmPassword', formData.confirmPassword);
+    dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
 
-//   dispatch({ type: REGISTER_USER_REQUEST });
-//   return async (dispatch) => {
-//     dispatch({ type: REGISTER_USER_REQUEST });
-//     try {
-//       const response = await axios.post('https://e-prathibha.com/apis/register', formDataObject);
-//       dispatch({ type: REGISTER_USER_SUCCESS, payload: response.data });
-//       return response;
-//     } catch (error) {
-//       dispatch({ type: REGISTER_USER_FAILURE, error: error.message });
-//       throw error;
-//     }
-//   };
+    return response;
+  } catch (error) {
+    dispatch({ type: REGISTER_USER_FAILURE, error: error.message });
+    throw error; 
+  }
 }
+   
+
+
+
 
 
 
@@ -121,7 +102,7 @@ return async(dispatch)=>{
     const response = await axios.post('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
       id: 4341, 
       server_key: server_key,
-      tokenu: "NIJ9Al4L82CUk9d9A0F4"
+      tokenu: "oaTBSLkI8PZ38CsLtfV0"
      } 
     });
    
@@ -155,34 +136,7 @@ export const submitRegistrationFailure = (error) => ({
 
 
 
-//startExam
 
-// export const fetchExamQuestions = (examId) => {
-//   return  async(dispatch) => {
-//     dispatch(fetchExamQuestionsRequest());
-// try{
-//   const response = await axios.get(
-//     `https://e-prathibha.com/apis/start_exam?examId=${examId}`,
-//     {
-//       headers: {
-//         id: 4341,
-//         server_key: server_key,
-//         tokenu: 'U7t8LeLpqLfdeHk4KjtB',
-//       },
-//     }
-//   );
-
-// // console.log(response,"response2");
-//   const questions = response.data;
-//   dispatch(fetchExamQuestionsSuccess(questions));
-//   return response
-
-// } catch (error) {
-//   dispatch(fetchExamQuestionsFailure(error.message));
-// }
-   
-//   };
-// };
 
 export const fetchExamQuestions = (examId) => async (dispatch) => {
   dispatch({ type: 'FETCH_EXAM_QUESTIONS_REQUEST' });
@@ -190,7 +144,7 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
   try {
     const response = await axios.get(` https://e-prathibha.com/apis/start_exam?examId=${examId}`,{headers: {id: 4341, 
     server_key: server_key,
-    tokenu: "NIJ9Al4L82CUk9d9A0F4"
+    tokenu: "oaTBSLkI8PZ38CsLtfV0"
    } });
     const data = await response.data.data;
     console.log(data);
@@ -203,54 +157,6 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
   }
 };
 
-// export const fetchExamQuestionsRequest = () => ({
-//   type: FETCH_EXAM_QUESTIONS_REQUEST,
-// });
-
-// export const fetchExamQuestionsSuccess = (questions) => ({
-//   type: FETCH_EXAM_QUESTIONS_SUCCESS,
-//   payload: questions,
-// });
-
-// export const fetchExamQuestionsFailure = (error) => ({
-//   type: FETCH_EXAM_QUESTIONS_FAILURE,
-//   payload: error,
-// });
-
-// export const examBegins = (formData)  => {
- 
-//   return async(dispatch)=>{
-//     try {
-//       const response = await axios.get('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
-//         id: 4341, 
-//         server_key: server_key,
-//         tokenu: '8sVPGpvMAJ4D3ja3mOmu' 
-//        } 
-//       });
-//       return response
-      
-//       console.log(response,"axios response");
-  
-//       dispatch(examSuccess(response.data));
-     
-//     } catch (error) {
-//       dispatch(examFailure(error.message));
-//     }
-//   }
-//   //  console.log(Headers);
-//   //  console.log(formData);
-  
-    
-//   };
-//   export const examSuccess = (data) => ({
-//     type: 'SUBMIT_REGISTRATION_SUCCESS',
-//     payload: data,
-//   });
-  
-//   export const examFailure = (error) => ({
-//     type: 'SUBMIT_REGISTRATION_FAILURE',
-//     payload: error,
-//   });
 
 
 
@@ -278,32 +184,5 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
 
 
 
-// const getExam =()=>{
-//   return async(dispatch)=>{
-//     try{
-//       const questions= await axios.get(" https://e-prathibha.com/apis/test_free_exam")
-//     }
-//   }
-// }
 
-// export const registerUser = (userData) => {
-//   return async (dispatch) => {
-//     try {
-//       const response = await axios.post(
-//         'https://e-prathibha.com/apis/register',
-//         userData,
 
-//       );
-//       console.log('Response:', response);
-//       dispatch({
-//         type: 'REGISTER_SUCCESS',
-//         payload: response.data,
-//       });
-//     } catch (error) {
-//       dispatch({
-//         type: 'REGISTER_FAILURE',
-//         payload: error.message,
-//       });
-//     }
-//   };
-// };

@@ -16,7 +16,7 @@ const startExam=async(e)=>{
   e.preventDefault();
 
   
-  const examId = 24; 
+  const examId = 25; 
   
 
     try {

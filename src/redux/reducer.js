@@ -116,14 +116,14 @@ export const emailVerificationReducer = (
 
 
 export const regReducer = (state =  {
-  formData: null,
+  user: null,
   error: null,
 }, action) => {
   switch (action.type) {
     case 'SUBMIT_REGISTRATION_SUCCESS':
       return {
         ...state,
-        formData: action.payload,
+        user: action.payload,
         error: null,
       };
     case 'SUBMIT_REGISTRATION_FAILURE':
