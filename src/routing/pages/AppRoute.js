@@ -7,6 +7,7 @@ import Exam from "./Exam";
 import EmailVerificationPage from "./verifyEmail";
 import FreeExam from "./FreeExam";
 import ExamComponent from "./ExamComponent";
+import VerificationConfirmed from "./VerificationConfirmed";
 
 function AppRoute() {
   return (
@@ -33,6 +34,8 @@ function AppRoute() {
         <Route path="/" element={<Home />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/login" element={<Login/>}/>
+        <Route  path="/Verification" element={<VerificationConfirmed/>}                       />
+
 
 
 
