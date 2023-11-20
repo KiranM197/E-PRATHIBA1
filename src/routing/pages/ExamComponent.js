@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchExamQuestions } from '../../redux/action';
 import Header from '../components/functional/Header';
 import './ExamComponent.css'; 
+import { Link } from 'react-router-dom';
 
 
 function ExamComponent() {
@@ -74,16 +75,17 @@ console.log('State:', useSelector((state) => state.exam));
 </div>
         </div>
       )}
-      {/* <button >Signout</button> */}
       </div>
 
 
- {/* {
-  data?.exam?.map((value)=>(
-    <p>{value.Question.question.above}</p>
-  ))
-}   */}
-      
+
+      <div>
+    <Link to='/'>
+    
+    <button type='button' >Signout</button>
+    
+    </Link>
+   </div>
       
     </div>
   );

@@ -19,11 +19,14 @@ function AppRoute() {
         <Route path="/" element={<Home />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/packages" element={<Packages />} />
-        <Route path="/register" element={<RegisterLogin />} />
         <Route path="/login" element={<Login/>}/>
-        <Route path="/emailverify" element={<EmailVerificationPage/>}/>
         <Route path="/freeexam" element={<FreeExam/>}/>
         <Route path="/examComponent" element={<ExamComponent/>}/>
+        <Route path="/register" element={<RegisterLogin />} />
+        <Route path="/emailverify" element={<EmailVerificationPage/>}/>
+        <Route  path="/Verification" element={<VerificationConfirmed/>}/>
+
+
 
 
       
@@ -34,7 +37,11 @@ function AppRoute() {
         <Route path="/" element={<Home />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/login" element={<Login/>}/>
-        <Route  path="/Verification" element={<VerificationConfirmed/>}                       />
+        <Route  path="/Verification" element={<VerificationConfirmed/>}/>
+        <Route path="/emailverify" element={<EmailVerificationPage/>}/>
+        <Route path="/register" element={<RegisterLogin />} />
+
+
 
 
 

@@ -102,7 +102,7 @@ return async(dispatch)=>{
     const response = await axios.post('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
       id: 4341, 
       server_key: server_key,
-      tokenu: "oaTBSLkI8PZ38CsLtfV0"
+      tokenu: "nGkZMy9v9yFQsQmWq6me"
      } 
     });
    
@@ -144,7 +144,7 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
   try {
     const response = await axios.get(` https://e-prathibha.com/apis/start_exam?examId=${examId}`,{headers: {id: 4341, 
     server_key: server_key,
-    tokenu: "oaTBSLkI8PZ38CsLtfV0"
+    tokenu: "nGkZMy9v9yFQsQmWq6me"
    } });
     const data = await response.data.data;
     console.log(data);
