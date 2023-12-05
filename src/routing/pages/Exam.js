@@ -65,18 +65,7 @@ function Exam() {
 
 
 
-// {loading ? (
-//   <p>Loading...</p>
-// ) : responseInUI ? (
-//   <div>
-//     <h2>Data:</h2>
-//     <pre>{JSON.stringify(responseInUI, null, 2)}</pre>
-//     <h2>Formatted Data:</h2>
-    
-//   </div>
-// ) : (
-//   <p>Click the button to fetch and display data</p>
-// )}
+
 
 
 

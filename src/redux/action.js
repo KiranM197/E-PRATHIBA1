@@ -12,8 +12,7 @@ import {
   FETCH_EXAM_QUESTIONS_SUCCESS,
   FETCH_EXAM_QUESTIONS_FAILURE,
 } from "./actionTypes";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+
 
 const server_key = "3w99V63pW7tJ7vavGXtCKo8cp";
 
@@ -102,7 +101,7 @@ return async(dispatch)=>{
     const response = await axios.post('https://e-prathibha.com/apis/test_free_exam',formData, {headers: {
       id: 4341, 
       server_key: server_key,
-      tokenu: "nGkZMy9v9yFQsQmWq6me"
+      tokenu: "qq8pavKKp304oAKYhadZ"
      } 
     });
    
@@ -144,7 +143,7 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
   try {
     const response = await axios.get(` https://e-prathibha.com/apis/start_exam?examId=${examId}`,{headers: {id: 4341, 
     server_key: server_key,
-    tokenu: "nGkZMy9v9yFQsQmWq6me"
+    tokenu: "qq8pavKKp304oAKYhadZ"
    } });
     const data = await response.data.data;
     console.log(data);
@@ -156,6 +155,31 @@ export const fetchExamQuestions = (examId) => async (dispatch) => {
     dispatch({ type: 'FETCH_EXAM_QUESTIONS_FAILURE', payload: error.message });
   }
 };
+
+
+
+
+// export const finishExam = (data) => async (dispatch) =>{
+//   dispatch ({type:'EXAM_IS_FINISHED '})
+
+//   try {
+//     const response = await axios.post(` https://e-prathibha.com/apis/start_exam?examId=${data}`,{headers: {id: 4341, 
+//     server_key: server_key,
+//     tokenu: "qq8pavKKp304oAKYhadZ"
+//    } });
+//     const data = await response.data;
+//     console.log(data);
+
+//     dispatch({ type: 'FETCH_EXAM_QUESTIONS_SUCCESS', payload: data });
+//     return response
+    
+//   } catch (error) {
+//     dispatch({ type: 'FETCH_EXAM_QUESTIONS_FAILURE', payload: error.message });
+//   }
+
+
+
+// }
 
 
 

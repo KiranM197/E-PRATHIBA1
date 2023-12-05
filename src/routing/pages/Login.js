@@ -100,8 +100,6 @@ const LoginComponent = () => {
             </Link>
           </div>
         </div>
-        {/* {error && <p>Error: {error}</p>} */}
-        {/* {user && <p>Welcome {user.email}</p>} */}
       </div>
     </>
   );
