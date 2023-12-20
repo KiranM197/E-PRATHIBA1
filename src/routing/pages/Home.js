@@ -3,10 +3,8 @@ import Header from "../components/functional/Header";
 import prathiba from "./prathiba.jpg";
 import packg from "./package-img.jpg";
 import "../components/functional/Header.css"
-import Packages from "./Packages";
 import "./Home.css"
 import { Link } from "react-router-dom";
-import Footerhm from "../components/functional/Footerhm";
 
 function Home() {
   return (
